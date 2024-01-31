@@ -37,7 +37,7 @@ st.markdown("""<style>
                 margin-bottom:15px;
             }
             .inner-text b{
-                color:FireBrick;
+                color:orange;
             }
             </style>""", unsafe_allow_html=True)
 
@@ -62,9 +62,11 @@ with st.container(border=True):
                             </li>
                             <li>Prise d'info sur l'activité du <b>cinéma</b>
                             </li>
-                            <li>Première analyse des bases de données brut
+                            <li>Obtenir quelques <b>statistiques</b> sur les films
                             </li>
-                            <li>Conclusion de l'analyse
+                            <li>Système de <b>recommandation</b> de <b>films</b>
+                            </li>
+                            <li><b>Conclusion</b> et <b>pistes d’amélioration.</b>
                             </li>
                         <ul/>
                         <p><i>
@@ -123,17 +125,15 @@ with st.container(border=True):
         col1, col2 = st.columns(2)
         with col1:st.markdown(f"""<div class='inner-text'>
                         <ul>
-                            <li>La méthode <b>Agil-Scrum</b>
+                            <li>Base de données très lourde importer besoin de nettoyage important
                             </li>
-                            <li>Langage <b>Python</b> pour la programmation
+                            <li>Après analyse de la base complète IMDB <b>Sur-représentation</b> des films <b>Indiens</b>
                             </li>
-                            <li><b>Pandas</b> et <b>Numpy</b> pour la structure des données
+                            <li>Difficulté de <b>compréhention</b> de la demande du <b>projet</b>
                             </li>
-                            <li><b>Matplotlib</b> et <b>Seaborn</b> la visualisation des graphiques
+                            <li>Affinage du model de <b>Machine Learning</b> assez long
                             </li>
-                            <li><b>SciKit Learn</b> pour model de Machine Learning
-                            </li>
-                            <li><b>Streamlit</b> pour cette incroyable présentation
+                            <li>Mise en place de <b>Streamlit</b>
                             </li>
                         <ul/>
                         </div>""", unsafe_allow_html=True)

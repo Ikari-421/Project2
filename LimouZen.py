@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Bonjour LimouZen",
-    page_icon="📑",
+    page_icon="🎬",
     layout="wide")
 
 with st.sidebar:
@@ -35,4 +35,4 @@ with st.container():
         st.markdown("<div class='names'><h3>Thomas</h3><p>Recherche secteur et Dataviz</p></div>", unsafe_allow_html=True)
     with col3:
         st.image("https://static.streamlit.io/examples/cat.jpg")
-        st.markdown("<div class='names'><h3>Maximilien</h3><p>Data-base et Machine learning</p></div>", unsafe_allow_html=True)
+        st.markdown("<div class='names'><h3>Maximilien</h3><p>Data-base et Scrum-Master</p></div>", unsafe_allow_html=True)
