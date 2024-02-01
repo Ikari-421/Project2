@@ -36,3 +36,11 @@ with st.container():
     with col3:
         st.image("https://static.streamlit.io/examples/cat.jpg")
         st.markdown("<div class='names'><h3>Maximilien</h3><p>Data-base et Scrum-Master</p></div>", unsafe_allow_html=True)
+
+    # import pandas as pd
+    # import seaborn as sns
+    # import sys
+    # st.write("Panda version", pd. __version__)
+    # st.write("seaborn version", sns. __version__)
+    # st.write("streamlit version", st. __version__)
+    # st.write("Python version", sys.version)
