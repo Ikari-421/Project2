@@ -1,11 +1,18 @@
 import streamlit as st
-from head_master import *
+import head_master as hm
 import pandas as pd
+
 
 st.set_page_config(
     page_title="Analyse et KPIs",
     page_icon="📈",
     layout="wide")
+
+# import matplotlib
+# import plotly
+# import sklearn
+# st.title('plotly=='+plotly.__version__)
+# st.title('matplotlib=='+matplotlib.__version__)
 
 url = "./src_data/"
 csv_movies = pd.read_csv(url+"MOVIE_filtered.zip" ,compression="zip", low_memory=False)
@@ -82,7 +89,7 @@ with st.sidebar:
 #-----------------
 
 with st.container():
-    st.markdown("<h1 style='text-align: center; color:#006699; margin-top:-80px;'>📈 Analyse et KPIs</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color:##2c2e58; margin-top:-80px;'>📈 Analyse et KPIs</h1>", unsafe_allow_html=True)
     # st.markdown("<h2 style='color:#006699;margin-bottom:-40px;'>Les Graphiques:</h2>", unsafe_allow_html=True)
     st.header("", divider='rainbow')
 
@@ -96,16 +103,16 @@ with st.container(border=True):
 
     with tab2:
         st.markdown("<h3 class='title-tab'>Finances</h3>", unsafe_allow_html=True)
-        charts_core("finance_charts", filtered_df)
+        hm.charts_core("finance_charts", filtered_df)
 
     with tab3:
         st.markdown("<h3 class='title-tab'>Production companies</h3>", unsafe_allow_html=True)
-        production_charts(filtered_df)
+        hm.production_charts(filtered_df)
 
     with tab4:
         st.markdown("<h3 class='title-tab'>Acteurs / directeur / écrivant</h3>", unsafe_allow_html=True)
-        actors_charts(csv_movies, title_principals, name_basics)
+        hm.actors_charts(csv_movies, title_principals, name_basics)
 
     with tab5:
         st.markdown("<h3 class='title-tab'>Genres</h3>", unsafe_allow_html=True)
-        genres_charts(filtered_df)
+        hm.genres_charts(filtered_df)

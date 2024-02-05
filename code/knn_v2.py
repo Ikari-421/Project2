@@ -1,22 +1,33 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[2]:
+
+
 import streamlit as st
-import pandas as pd
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import RobustScaler
+import pandas as pd
 import numpy as np
 
-url = "./src_data/"
-df_movies = pd.read_csv(url+"ml_data.csv")
+df_movies=pd.read_csv(r"C:\Users\Admin\ml_data.csv")
 
-st.set_page_config(
-    page_title="Analyse et KPIs",
-    page_icon="📈",
-    layout="wide")
 
+# In[ ]:
+
+
+df_movies=pd.read_csv(r"C:\Users\Admin\ml_data.csv")
+
+
+
+# In[6]:
+
+
+st.set_page_config(layout="wide")
 st.title("Movie Recommendation System")
 
 # User interface for selecting a movie title, genres, and actors
-movie_options = np.insert(df_movies['originalTitle'].unique(), 0, '')
+movie_options = np.insert(df_movies['originalTitle'].unique(), 0, 'None')
 selected_movie = st.selectbox("Select a movie (optional):", options=movie_options)
 selected_genres = st.multiselect("Select genres (optional):", options=np.sort(df_movies['genres'].str.split(',', expand=True).stack().unique()))
 selected_actors = st.multiselect("Select actor(s) (optional):", options=np.sort(df_movies['actors_actresses'].str.split(',', expand=True).stack().unique()))
@@ -38,7 +49,7 @@ def create_dummy_columns(df, names_list, column_name, df_column):
 # The main function to make recommendations
 def get_recommendations(movie_title, selected_genres, selected_actors, num_recs):
     top30000 = df_movies
-
+    
     # Filter by selected genres
     if selected_genres:
         top30000 = top30000[top30000['genres'].apply(lambda x: any(genre.strip() in [g.strip() for g in str(x).split(',')] for genre in selected_genres) if x else False)]
@@ -48,12 +59,12 @@ def get_recommendations(movie_title, selected_genres, selected_actors, num_recs)
         top30000 = top30000[top30000['actors_actresses'].apply(lambda x: any(actor.strip() in [a.strip() for a in str(x).split(',')] for actor in selected_actors) if x else False)]
 
     # Re-include the selected movie if it's been filtered out
-    if movie_title != '' and movie_title not in top30000['originalTitle'].values:
+    if movie_title != 'None' and movie_title not in top30000['originalTitle'].values:
         selected_movie_df = df_movies[df_movies['originalTitle'] == movie_title]
         top30000 = pd.concat([top30000, selected_movie_df], ignore_index=True)
     
     # Running knn if a title is selected.
-    if movie_title != '':
+    if movie_title != 'None':
         # Getting the index of the seleted film then create dummies of categoricals
         index_movie = top30000.loc[top30000["originalTitle"] == movie_title].index[0]
         actors_in_chosen_film = splitter(top30000.iloc[index_movie]['actors_actresses'])
@@ -71,8 +82,6 @@ def get_recommendations(movie_title, selected_genres, selected_actors, num_recs)
         X = df_knn
         # scaling
         scaler = StandardScaler()
-        # scaler = RobustScaler()
-
         X_scaled = scaler.fit_transform(X)
         # fit model with user specified number of negbours
         model = NearestNeighbors(n_neighbors=num_recs)
@@ -83,9 +92,13 @@ def get_recommendations(movie_title, selected_genres, selected_actors, num_recs)
     else:
         # If no movie title selected the system recommends the best rated movies with the users chosen genres or actors
         recommended_movies = top30000.head(num_recs)
-
+    
     recommended_movies = recommended_movies.set_index('originalTitle')
     return recommended_movies
+
+
+
+# In[ ]:
 
 st.markdown("""<style>
             .head_movie {
@@ -106,9 +119,8 @@ st.markdown("""<style>
             }
             .head_movie p{
                 font-size:18px;
-            }
+            }        
             .blur-container {
-                border-radius:8px;
                 background-color: rgba(255, 255, 255, 0.4);
                 height:95%;
                 padding-left: 20px;
@@ -136,7 +148,6 @@ st.markdown("""<style>
                 font-size:18px;
             }
             </style>""", unsafe_allow_html=True)
-
 ####The STREAMLIT layout and buttons configuration
 
 if st.button("Get Recommendations"):
@@ -144,7 +155,7 @@ if st.button("Get Recommendations"):
     adjusted_num_recs = num_recommendations + 1 if selected_movie != 'None' else num_recommendations
     recommendations = get_recommendations(selected_movie, selected_genres, selected_actors, adjusted_num_recs)
 
-    if selected_movie != '':
+    if selected_movie != 'None':
         movie_details = df_movies[df_movies['originalTitle'] == selected_movie].iloc[0]
 
 
@@ -163,7 +174,7 @@ if st.button("Get Recommendations"):
 
             # Column 2: Displaying the selected movie's details next to the image
             with col2:
-                title = str(movie_details['originalTitle'])
+                title = str(movie_details['title'])
                 runtimeMinutes = str(int(movie_details['runtimeMinutes']))
                 startYear = str(movie_details.get('startYear', 'N/A'))
                 directors = str(movie_details.get('directors', 'N/A'))
@@ -234,3 +245,4 @@ if st.button("Get Recommendations"):
                 st.markdown(f"""<div style='height:5px;'>
                             </div>""",
                             unsafe_allow_html=True)
+
