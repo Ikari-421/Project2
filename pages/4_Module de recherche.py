@@ -67,7 +67,10 @@ def get_recommendations(movie_title, selected_genres, selected_actors, num_recs)
         create_dummy_columns(top30000, genres, 'genre_', 'genres')
         
         #making knn df with only numerical cols
-        df_knn = top30000.drop(columns=['tconst', 'genres', 'overview', 'poster_path', 'originalTitle', 'actors_actresses', 'directors', 'writers', 'averageRating', 'numVotes'])
+        df_knn = top30000.drop(columns=['tconst', 'genres', 'overview', 'poster_path', 'originalTitle', 'actors_actresses', 'directors', 'writers','writers'
+                                        #  'averageRating',
+                                        #  'numVotes'
+                                        ])
         X = df_knn
         # scaling
         scaler = StandardScaler()
