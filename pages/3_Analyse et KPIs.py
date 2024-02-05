@@ -91,7 +91,8 @@ with st.container(border=True):
                                             "Acteurs / directeur / écrivant","Genre"
                                             ])
     with tab1:
-        st.markdown("<h3 class='title-tab'>Analyse secteur</h3>", unsafe_allow_html=True)
+        st.markdown("""<h3 class='title-tab'>Analyse secteur</h3>
+                    """, unsafe_allow_html=True)
 
     with tab2:
         st.markdown("<h3 class='title-tab'>Finances</h3>", unsafe_allow_html=True)
@@ -100,7 +101,7 @@ with st.container(border=True):
     with tab3:
         st.markdown("<h3 class='title-tab'>Production companies</h3>", unsafe_allow_html=True)
         production_charts(filtered_df)
-            
+
     with tab4:
         st.markdown("<h3 class='title-tab'>Acteurs / directeur / écrivant</h3>", unsafe_allow_html=True)
         actors_charts(csv_movies, title_principals, name_basics)
