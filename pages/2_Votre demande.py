@@ -11,7 +11,7 @@ with st.sidebar:
 
 st.markdown("""<style>
             .names h3{
-                color: #006699;
+                color: #52527a;
                 margin-top:-15px;
                 margin-bottom:-15px;
             }
@@ -19,7 +19,7 @@ st.markdown("""<style>
                 text-align: center;
             }
             .title-tab {
-                color:#3e82a4;
+                color:#52527a;
                 margin-bottom:10px;
             }
             .inner-text ul{
@@ -48,8 +48,9 @@ with st.container():
         <img src='{image_path}' alt='Image' style="height:200px;">
     </div>"""
     st.markdown(html_image, unsafe_allow_html=True)
-    st.markdown("<h2 style='color:#006699;margin-bottom:-40px;'>Nos missions:</h2>", unsafe_allow_html=True)
-    st.header("", divider='rainbow')
+    # st.header("", divider='grey')
+    st.markdown("<h2 style='color:#52527a;margin-top:30px;'>Nos missions:</h2>", unsafe_allow_html=True)
+    # st.header("", divider='grey')
 
 with st.container(border=True):
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["Notre travail", "Nos démarches", "Les outils",
@@ -144,7 +145,7 @@ with st.container(border=True):
                         </div>""", unsafe_allow_html=True)
         with col2:
             st.image("images/Dizzy_face.gif", use_column_width="auto")
-
+# 3e82a4
     with tab5:
         st.markdown("<h3 class='title-tab'>Nos pistes d'améliorations</h3>", unsafe_allow_html=True)
         col1, col2 = st.columns(2)

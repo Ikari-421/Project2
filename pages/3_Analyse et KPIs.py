@@ -31,7 +31,7 @@ name_basics = pd.read_csv(url+"names_filtered.zip" ,compression="zip", low_memor
 
 st.markdown("""<style>
             .title-tab {
-                color:#3e82a4;
+                color:#52527a;
                 margin-bottom:10px;
             }
             </style>""", unsafe_allow_html=True)
@@ -729,9 +729,9 @@ with st.container():
         <img src='{image_path}' alt='Image' style="height:200px;">
     </div>"""
     st.markdown(html_image, unsafe_allow_html=True)
-    st.markdown("<h1 style='text-align: center; color:#3e82a4; margin-top:-20px;'>📈 Analyse et KPIs</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color:#52527a;'>📈 Analyse et KPIs</h1>", unsafe_allow_html=True)
     # st.markdown("<h2 style='color:#006699;margin-bottom:-40px;'>Les Graphiques:</h2>", unsafe_allow_html=True)
-    st.header("", divider='rainbow')
+    st.header("", divider='grey')
 
 with st.container(border=True):
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["Analyse secteur", "Finances", "Production companies",

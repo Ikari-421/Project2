@@ -69,15 +69,13 @@ st.markdown("""<style>
             </style>""", unsafe_allow_html=True)
 
 with st.container():
-    # st.markdown("<h1 style='text-align: center; color:#006699; margin-top:0px;'>BONJOUR</h1>", unsafe_allow_html=True)
     image_path = "https://github.com/Ikari-421/Project2/blob/master/images/Logo-limouzen_square.png?raw=true"
     html_image = f"""
     <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: -50px;">
         <img src='{image_path}' alt='Image' style="height:200px;">
     </div>"""
     st.markdown(html_image, unsafe_allow_html=True)
-    st.markdown("<h2 style='color:#006699;margin-bottom:-40px;'>Notre équipe :</h2>", unsafe_allow_html=True)
-    st.header("", divider='rainbow')
+    st.header("", divider='grey')
 
     image_path = "https://github.com/Ikari-421/Project2/blob/master/images/logo-squarecharts.png?raw=true"
     html_image = f"""
@@ -91,8 +89,10 @@ with st.container():
     </div>"""
     st.markdown(html_image, unsafe_allow_html=True)
 
+    st.header("", divider='grey')
 
-
+    st.markdown("<h2 style='color:#52527a;margin-bottom:-40px;'>Notre équipe :</h2>", unsafe_allow_html=True)
+    
     image_marton = "https://github.com/Ikari-421/Project2/blob/master/images/marton.png?raw=true"
     image_thomas = "https://github.com/Ikari-421/Project2/blob/master/images/thomas.png?raw=true"
     image_max = "https://github.com/Ikari-421/Project2/blob/master/images/maximilien.png?raw=true"

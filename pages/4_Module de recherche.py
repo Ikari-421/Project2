@@ -9,7 +9,7 @@ url = "./src_data/"
 df_movies = pd.read_csv(url+"ml_data.csv")
 
 st.set_page_config(
-    page_title="Module de recommandation",
+    page_title="Module de recherche",
     page_icon="📽️",
     layout="wide")
 
@@ -22,21 +22,25 @@ with st.container():
         <img src='{image_path}' alt='Image' style="height:200px;">
     </div>"""
     st.markdown(html_image, unsafe_allow_html=True)
-    st.markdown("<h1 style='text-align: center; color:#3e82a4; margin-top:-20px;'>📽️ Module de recommandation 🎞</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color:#52527a;'>📽️ Module de recommandation</h1>", unsafe_allow_html=True)
     # st.markdown("<h2 style='color:#006699;margin-bottom:-40px;'>Les Graphiques:</h2>", unsafe_allow_html=True)
-    st.header("", divider='rainbow')
+    st.header("", divider='grey')
 
-    col1, col2, col3 = st.columns([1,2,1])
+    col1, col2, col3= st.columns([1,2,1])
     with col2:
         movie_options = np.insert(df_movies['originalTitle'].unique(), 0, '')
         selected_movie = st.selectbox("Select a movie (optional):", options=movie_options)
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3  = st.columns(3)
     with col1:
         selected_genres = st.multiselect("Select genres (optional):", options=np.sort(df_movies['genres'].str.split(',', expand=True).stack().unique()))
     with col2:
         selected_actors = st.multiselect("Select actor(s) (optional):", options=np.sort(df_movies['actors_actresses'].str.split(',', expand=True).stack().unique()))
     with col3:
         num_recommendations = st.slider("Select the number of recommendations:", 1, 10, 6)
+
+        ####The STREAMLIT layout and buttons configuration
+    btn_statment = st.button("Valier")
+    st.header("", divider='grey')
 
 # function to split strings into list of str
 def splitter(value):
@@ -139,7 +143,7 @@ st.markdown("""<style>
                 height:95%;
                 padding-left: 20px;
                 padding-right: 20px;
-                padding-top: -20px;
+                padding-top: -0px;
                 backdrop-filter: blur(10px);
                 margin-top:-80px;
                 width:100.25%;
@@ -147,7 +151,7 @@ st.markdown("""<style>
             }
             .blur-container p{
                 font-size:14px;
-                margin-top:-45px
+                margin-top:5px
                 height:90%;
             }
             .blur-container h2{
@@ -155,7 +159,7 @@ st.markdown("""<style>
                 text-align:center;
                 font-weight: bolder;
                 font-size:20px;
-                height:80px;
+                height:120px;
             }
             .blur-container p span{
                 font-weight: 300;
@@ -167,8 +171,7 @@ st.markdown("""<style>
             }
             </style>""", unsafe_allow_html=True)
 
-####The STREAMLIT layout and buttons configuration
-btn_statment = st.button("Get Recommendations")
+
 
 if btn_statment:
     # Fetch recommendations, potentially with one extra to exclude the selected movie later
@@ -205,12 +208,6 @@ if btn_statment:
                 actors_actresses = str(movie_details.get('actors_actresses', 'N/A'))
                 averageRating = str(round(movie_details['averageRating'],2))
                 overview = movie_details['overview']
-
-                # st.write(f"**Year:** {movie_details.get('startYear', 'N/A')}")
-                # st.write(f"**Director(s):** {movie_details.get('directors', 'N/A')}")
-                # st.write(f"**Actor(s):** {movie_details.get('actors_actresses', 'N/A')}")
-                # st.write("**Description:**")
-                # st.write(movie_details.get('overview', 'No description available.'))
 
                 st.markdown(f"""
                             <div class='head_movie'>
