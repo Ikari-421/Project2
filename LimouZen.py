@@ -7,49 +7,119 @@ st.set_page_config(
 
 with st.sidebar:
     with st.container():
-        st.image("images/Logo-limouzen_wide.png")
+        st.image("images/Logo-squarecharts_wide.png")
 
 st.markdown("""<style>
-            body { max-width: 1200px; margin: auto;}
+            body { max-width: 1200px; margin: auto; color:#333366; }
+            .our_logo{
+                margin:50px 0 50px 0;
+                display:flex;
+                justify-content:center;
+            }
+            .our_logo div{
+                display:flex;
+                align-items:center;
+            }
+            .our_logo img{
+                width:150px; 
+                border-radius:14px;
+            }
+            .our_logo p{
+                padding: 0px 40px 0px 40px;
+                width:600px;
+            }
             .names h3{
-                color: #006699;
+                color: #333366;
                 margin-top:-15px;
                 margin-bottom:-15px;
             }
             .names {
                 text-align: center;
             }
+            .profil_container{
+                width:auto;
+                display:flex;
+                justify-content:space-evenly;
+            }
+            .profil{
+                display:flex;
+                background: rgb(149,150,200);
+                background: linear-gradient(171deg, rgba(149,150,200,0.4) 0%, rgba(164,164,210,0.4) 6%, rgba(185,185,224,0.4) 21%, rgba(210,210,241,0.4) 31%, rgba(212,212,241,0.4) 49%, rgba(218,217,242,1) 79%, rgba(247,244,244,0.4) 100%);
+                padding:25px;
+                border-radius:8px;
+                border: silver solid 0px;
+                box-shadow: 0px 0px 6px 1px #c4c4c4;
+                flex-direction:column;
+                align-items:center;
+                width:25%;
+                margin-top:35px;
+            }
+            .profil img{
+                width:150px;
+                border:#333366 solid 3px;
+                border-radius:50%;
+                box-shadow: 1px 1px 15px 1px #c4c4c4;
+            }
+            .profil h3{
+                margin-top:50px;
+            }
+            .profil p, .profil h3{
+                text-shadow: 0px 0px 8px #fff;
+            }
             </style>""", unsafe_allow_html=True)
 
-
 with st.container():
-    st.markdown("<h1 style='text-align: center; color:#006699; margin-top:-80px;'>BONJOUR<br>LimouZen Cinéma</h1>", unsafe_allow_html=True)
+    # st.markdown("<h1 style='text-align: center; color:#006699; margin-top:0px;'>BONJOUR</h1>", unsafe_allow_html=True)
+    image_path = "images/Logo-limouzen_square.png"
+    html_image = f"""
+    <div>
+        <img src='{image_path}' alt='Image'>
+    </div>"""
+    st.markdown(html_image, unsafe_allow_html=True)
+
     st.markdown("<h2 style='color:#006699;margin-bottom:-40px;'>Notre équipe :</h2>", unsafe_allow_html=True)
     st.header("", divider='rainbow')
 
-    col1, col2, col3, col4 = st.columns([1,2,3,1])
-    with col2:
-        st.image('images/logo-squarecharts.png')
-        image_path = "https://static.streamlit.io/examples/cat.jpg"
-        html_image = f"<img src='{image_path}'>"
-        st.markdown(html_image, unsafe_allow_html=True)
+    image_path = "https://github.com/Ikari-421/Project2/blob/master/images/logo-squarecharts.png?raw=true"
+    html_image = f"""
+    <div class="our_logo">
+        <div>
+        <img src='{image_path}' alt='Image'>
+            <p>
+            <b> Square Charts</b>, spécialiste de l'analyse de données, présente une analyse approfondie du marché du cinéma, accompagnée d'un modèle de recommandation de films personnalisé.
+            </p>
+        </div>
+    </div>"""
+    st.markdown(html_image, unsafe_allow_html=True)
 
-    with col3:
-        st.markdown("""<div style='margin:40px 0px 40px 0px;'>
-                    Square Charts, spécialiste de l'analyse de données, présente une analyse approfondie du marché du cinéma, accompagnée d'un modèle de recommandation de films personnalisé.
+
+
+    image_marton = "https://github.com/Ikari-421/Project2/blob/master/images/marton.png?raw=true"
+    image_thomas = "https://github.com/Ikari-421/Project2/blob/master/images/thomas.png?raw=true"
+    image_max = "https://github.com/Ikari-421/Project2/blob/master/images/maximilien.png?raw=true"
+
+    st.markdown(f"""
+                <div class="profil_container">
+                    <div class="profil">
+                        <img src='{image_marton}' alt='Image'>
+                        <div class='names'><h3>Marton</h3>
+                            <p>DataViz et Machine learning</p>
+                        </div>
                     </div>
-                    """, unsafe_allow_html=True)
-    
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.image("https://static.streamlit.io/examples/cat.jpg")
-        st.markdown("<div class='names'><h3>Marton</h3><p>DataViz et Machine learning</p></div>", unsafe_allow_html=True)
-    with col2:
-        st.image("https://static.streamlit.io/examples/cat.jpg")
-        st.markdown("<div class='names'><h3>Thomas</h3><p>Recherche secteur et Dataviz</p></div>", unsafe_allow_html=True)
-    with col3:
-        st.image("https://static.streamlit.io/examples/cat.jpg")
-        st.markdown("<div class='names'><h3>Maximilien</h3><p>Data-base et Scrum-Master</p></div>", unsafe_allow_html=True)
+                    <div class="profil">
+                        <img src='{image_thomas}' alt='Image'>
+                        <div class='names'><h3>Thomas</h3>
+                            <p>Recherche secteur et Dataviz</p>
+                        </div>
+                    </div>
+                    <div class="profil">
+                        <img src='{image_max}' alt='Image'>
+                        <div class='names'><h3>Maximilien</h3>
+                            <p>Data-base,  et Scrum-Master</p>
+                        </div>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
 
     # import pandas as pd
     # import seaborn as sns
