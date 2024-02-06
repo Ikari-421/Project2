@@ -43,8 +43,7 @@ st.markdown("""<style>
             }
             .profil{
                 display:flex;
-                background: rgb(149,150,200);
-                background: linear-gradient(171deg, rgba(149,150,200,0.4) 0%, rgba(164,164,210,0.4) 6%, rgba(185,185,224,0.4) 21%, rgba(210,210,241,0.4) 31%, rgba(212,212,241,0.4) 49%, rgba(218,217,242,1) 79%, rgba(247,244,244,0.4) 100%);
+                background: #fff;
                 padding:25px;
                 border-radius:8px;
                 border: silver solid 0px;
@@ -56,12 +55,13 @@ st.markdown("""<style>
             }
             .profil img{
                 width:150px;
-                border:#333366 solid 3px;
+                border:#333366 solid 4px;
                 border-radius:50%;
                 box-shadow: 1px 1px 15px 1px #c4c4c4;
             }
             .profil h3{
-                margin-top:50px;
+                color: #996699;
+                margin-top:30px;
             }
             .profil p, .profil h3{
                 text-shadow: 0px 0px 8px #fff;
@@ -70,10 +70,10 @@ st.markdown("""<style>
 
 with st.container():
     # st.markdown("<h1 style='text-align: center; color:#006699; margin-top:0px;'>BONJOUR</h1>", unsafe_allow_html=True)
-    image_path = "images/Logo-limouzen_square.png"
+    image_path = "https://github.com/Ikari-421/Project2/blob/master/images/Logo-limouzen_square.png?raw=true"
     html_image = f"""
-    <div>
-        <img src='{image_path}' alt='Image'>
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: -50px;">
+        <img src='{image_path}' alt='Image' style="height:200px;">
     </div>"""
     st.markdown(html_image, unsafe_allow_html=True)
 

@@ -7,7 +7,7 @@ st.set_page_config(
 
 with st.sidebar:
     with st.container():
-        st.image("images/Logo-limouzen_wide.png")
+        st.image("images/Logo-squarecharts_wide.png")
 
 st.markdown("""<style>
             .names h3{
@@ -30,7 +30,7 @@ st.markdown("""<style>
                 margin-top:35px;
                 margin-left:-55px;
                 padding-right:20px;
-                color:FireBrick;
+                color:#333366;
             }
             .inner-text li{
                 font-size:18px;
@@ -42,7 +42,12 @@ st.markdown("""<style>
             </style>""", unsafe_allow_html=True)
 
 with st.container():
-    st.markdown("<h1 style='text-align: center; color:#006699; margin-top:-80px;'>VOTRE DEMANDE</h1>", unsafe_allow_html=True)
+    image_path = "https://github.com/Ikari-421/Project2/blob/master/images/Logo-limouzen_square.png?raw=true"
+    html_image = f"""
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: -50px;">
+        <img src='{image_path}' alt='Image' style="height:200px;">
+    </div>"""
+    st.markdown(html_image, unsafe_allow_html=True)
     st.markdown("<h2 style='color:#006699;margin-bottom:-40px;'>Nos missions:</h2>", unsafe_allow_html=True)
     st.header("", divider='rainbow')
 

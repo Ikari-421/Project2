@@ -30,34 +30,9 @@ name_basics = pd.read_csv(url+"names_filtered.zip" ,compression="zip", low_memor
 
 
 st.markdown("""<style>
-            .names h3{
-                color: #006699;
-                margin-top:-15px;
-                margin-bottom:-15px;
-            }
-            .names {
-                text-align: center;
-            }
             .title-tab {
                 color:#3e82a4;
                 margin-bottom:10px;
-            }
-            .inner-text ul{
-                margin-top:25px;
-                margin-left:45px;
-            }
-            .inner-text p{
-                margin-top:35px;
-                margin-left:-55px;
-                padding-right:20px;
-                color:FireBrick;
-            }
-            .inner-text li{
-                font-size:18px;
-                margin-bottom:15px;
-            }
-            .inner-text b{
-                color:orange;
             }
             </style>""", unsafe_allow_html=True)
 
@@ -66,6 +41,7 @@ st.markdown("""<style>
 #-----------------
 
 with st.sidebar:
+    st.image("images/Logo-squarecharts_wide.png")
     with st.container():
         st.header('Filters')
 
@@ -88,8 +64,6 @@ with st.sidebar:
 
         if selected_genres:
             filtered_df = filtered_df[filtered_df['genres'].apply(lambda x: any(genre in x for genre in selected_genres))]
-
-    st.image("images/Logo-limouzen_wide.png")
 
 
 #
@@ -749,7 +723,13 @@ def genres_charts(filtered_df):
 #-----------------
 
 with st.container():
-    st.markdown("<h1 style='text-align: center; color:##2c2e58; margin-top:-80px;'>📈 Analyse et KPIs</h1>", unsafe_allow_html=True)
+    image_path = "https://github.com/Ikari-421/Project2/blob/master/images/Logo-limouzen_square.png?raw=true"
+    html_image = f"""
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: -50px;">
+        <img src='{image_path}' alt='Image' style="height:200px;">
+    </div>"""
+    st.markdown(html_image, unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color:#3e82a4; margin-top:-20px;'>📈 Analyse et KPIs</h1>", unsafe_allow_html=True)
     # st.markdown("<h2 style='color:#006699;margin-bottom:-40px;'>Les Graphiques:</h2>", unsafe_allow_html=True)
     st.header("", divider='rainbow')
 
