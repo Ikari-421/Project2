@@ -25,7 +25,6 @@ with st.container():
     </div>"""
     st.markdown(html_image, unsafe_allow_html=True)
     st.markdown("<h1 style='text-align: center; color:#52527a;'>Module de recherche</h1>", unsafe_allow_html=True)
-    # st.markdown("<h2 style='color:#006699;margin-bottom:-40px;'>Les Graphiques:</h2>", unsafe_allow_html=True)
     st.header("", divider='grey')
 
     col1, col2, col3= st.columns([1,2,1])

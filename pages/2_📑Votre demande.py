@@ -48,9 +48,9 @@ with st.container():
         <img src='{image_path}' alt='Image' style="height:200px;">
     </div>"""
     st.markdown(html_image, unsafe_allow_html=True)
-    # st.header("", divider='grey')
-    st.markdown("<h2 style='color:#52527a;margin-top:30px;'>Nos missions:</h2>", unsafe_allow_html=True)
-    # st.header("", divider='grey')
+    st.markdown("<h1 style='text-align: center; color:#52527a;'>Votre demande</h1>", unsafe_allow_html=True)
+    st.header("", divider='grey')
+    st.markdown("<h2 style='color:#52527a;margin: -10px 0 10px 0;'>Nos missions:</h2>", unsafe_allow_html=True)
 
 with st.container(border=True):
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["Notre travail", "Nos démarches", "Les outils",
