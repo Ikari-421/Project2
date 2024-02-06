@@ -114,7 +114,7 @@ with st.container():
                     <div class="profil">
                         <img src='{image_max}' alt='Image'>
                         <div class='names'><h3>Maximilien</h3>
-                            <p>Data-base, streamlit et Scrum-Master</p>
+                            <p>Data-structure et Scrum-Master</p>
                         </div>
                     </div>
                 </div>
