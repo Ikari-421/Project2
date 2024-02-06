@@ -7,7 +7,7 @@ st.set_page_config(
 
 with st.sidebar:
     with st.container():
-        st.image("images/Logo-squarecharts_wide.png")
+        st.image("images/Logo-squarecharts_wide_2.png")
 
 st.markdown("""<style>
             .names h3{

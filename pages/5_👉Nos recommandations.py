@@ -6,4 +6,4 @@ st.set_page_config(
     layout="wide")
 
 with st.sidebar:
-    st.image("images/Logo-squarecharts_wide.png")
+    st.image("images/Logo-squarecharts_wide_2.png")

@@ -7,7 +7,7 @@ st.set_page_config(
 
 with st.sidebar:
     with st.container():
-        st.image("images/Logo-squarecharts_wide.png")
+        st.image("images/Logo-squarecharts_wide_2.png")
 
 st.markdown("""<style>
             body { max-width: 1200px; margin: auto; color:#333366; }
@@ -92,7 +92,7 @@ with st.container():
     st.header("", divider='grey')
 
     st.markdown("<h2 style='color:#52527a;margin-bottom:-40px;'>Notre équipe :</h2>", unsafe_allow_html=True)
-    
+
     image_marton = "https://github.com/Ikari-421/Project2/blob/master/images/marton.png?raw=true"
     image_thomas = "https://github.com/Ikari-421/Project2/blob/master/images/thomas.png?raw=true"
     image_max = "https://github.com/Ikari-421/Project2/blob/master/images/maximilien.png?raw=true"
