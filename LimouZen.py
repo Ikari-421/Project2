@@ -93,9 +93,9 @@ with st.container():
 
     st.markdown("<h2 style='color:#52527a;margin-bottom:-40px;'>Notre équipe :</h2>", unsafe_allow_html=True)
 
-    image_marton = "https://github.com/Ikari-421/Project2/blob/master/images/marton.png?raw=true"
-    image_thomas = "https://github.com/Ikari-421/Project2/blob/master/images/thomas.png?raw=true"
-    image_max = "https://github.com/Ikari-421/Project2/blob/master/images/maximilien.png?raw=true"
+    image_marton = "https://github.com/Ikari-421/Project2/blob/master/images/marton-1.png?raw=true"
+    image_thomas = "https://github.com/Ikari-421/Project2/blob/master/images/thomas-2.png?raw=true"
+    image_max = "https://github.com/Ikari-421/Project2/blob/master/images/maximilien-3.png?raw=true"
 
     st.markdown(f"""
                 <div class="profil_container">
@@ -114,7 +114,7 @@ with st.container():
                     <div class="profil">
                         <img src='{image_max}' alt='Image'>
                         <div class='names'><h3>Maximilien</h3>
-                            <p>Data-base,  et Scrum-Master</p>
+                            <p>Data-base, streamlit et Scrum-Master</p>
                         </div>
                     </div>
                 </div>
