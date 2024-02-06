@@ -11,8 +11,15 @@ st.set_page_config(
 # import matplotlib
 # import plotly
 # import sklearn
+# import pandas
+# import streamlit
+
+# st.title('pandas=='+pandas.__version__)
+# st.title('streamlit=='+streamlit.__version__)
+# st.title('sklearn=='+sklearn.__version__)
 # st.title('plotly=='+plotly.__version__)
 # st.title('matplotlib=='+matplotlib.__version__)
+
 
 url = "./src_data/"
 csv_movies = pd.read_csv(url+"MOVIE_filtered.zip" ,compression="zip", low_memory=False)

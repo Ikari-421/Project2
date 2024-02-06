@@ -58,7 +58,14 @@ def get_recommendations(movie_title, selected_genres, selected_actors, num_recs)
     if movie_title != '' and movie_title not in top30000['originalTitle'].values:
         selected_movie_df = df_movies[df_movies['originalTitle'] == movie_title]
         top30000 = pd.concat([top30000, selected_movie_df], ignore_index=True)
-    
+
+    if top30000.empty:
+        if selected_genres:
+            st.warning("Sorry, but there are no movies in the database that match your specific needs. However, here are some movies you might like based on your genre selection:")
+            top30000 = df_movies[df_movies['genres'].apply(lambda x: any(genre.strip() in (x.split(',') if isinstance(x, str) else []) for genre in selected_genres))]
+            if top30000.empty:
+                return "Sorry, but there are no movies in the database that match your genre selection."
+
     # Running knn if a title is selected.
     if movie_title != '':
         # Getting the index of the seleted film then create dummies of categoricals
@@ -72,7 +79,7 @@ def get_recommendations(movie_title, selected_genres, selected_actors, num_recs)
         create_dummy_columns(top30000, directors_in_chosen_film, 'director_', 'directors')
         create_dummy_columns(top30000, writers_in_chosen_film, 'writer_', 'writers')
         create_dummy_columns(top30000, genres, 'genre_', 'genres')
-        
+
         #making knn df with only numerical cols
         df_knn = top30000.drop(columns=['tconst', 'genres', 'overview', 'poster_path', 'originalTitle', 'actors_actresses', 'directors', 'writers','writers'
                                         #  'averageRating',
@@ -158,6 +165,10 @@ if btn_statment:
     # Fetch recommendations, potentially with one extra to exclude the selected movie later
     adjusted_num_recs = num_recommendations + 1 if selected_movie != 'None' else num_recommendations
     recommendations = get_recommendations(selected_movie, selected_genres, selected_actors, adjusted_num_recs)
+
+    if isinstance(recommendations, str):
+            # If recommendations is a string, display it as a message(when no movie found)
+            st.write(recommendations)
 
     if selected_movie != '':
         movie_details = df_movies[df_movies['originalTitle'] == selected_movie].iloc[0]
