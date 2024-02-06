@@ -76,7 +76,6 @@ with st.container():
         <img src='{image_path}' alt='Image' style="height:200px;">
     </div>"""
     st.markdown(html_image, unsafe_allow_html=True)
-
     st.markdown("<h2 style='color:#006699;margin-bottom:-40px;'>Notre équipe :</h2>", unsafe_allow_html=True)
     st.header("", divider='rainbow')
 
