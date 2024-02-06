@@ -153,17 +153,13 @@ with st.container(border=True):
             st.image("images/Good_team.gif", use_column_width="auto")
         with col2:st.markdown(f"""<div class='inner-text'>
                         <ul>
-                            <li>La méthode <b>Agil-Scrum</b>
+                            <li style="margin-top:55px;">Utilisation de modèle <b>N L P</b> (Natural Language Processing)
                             </li>
-                            <li>Langage <b>Python</b> pour la programmation
+                            <li><b>historique</b> de recherche de <b>films</b> du client
                             </li>
-                            <li><b>Pandas</b> et <b>Numpy</b> pour la structure des données
+                            <li><b>Explication du projet</b> plus claire et précise
                             </li>
-                            <li><b>Matplotlib</b> et <b>Seaborn</b> la visualisation des graphiques
-                            </li>
-                            <li><b>SciKit Learn</b> pour model de Machine Learning
-                            </li>
-                            <li><b>Streamlit</b> pour cette incroyable présentation
+                            <li>Accès aux données des <b>client</b> et <b>cinéma</b>
                             </li>
                         <ul/>
                         </div>""", unsafe_allow_html=True)

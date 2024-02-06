@@ -13,6 +13,8 @@ st.set_page_config(
     page_icon="📽️",
     layout="wide")
 
+with st.sidebar:
+    st.image("images/Logo-squarecharts_wide.png")
 
 # User interface for selecting a movie title, genres, and actors
 with st.container():
@@ -22,14 +24,16 @@ with st.container():
         <img src='{image_path}' alt='Image' style="height:200px;">
     </div>"""
     st.markdown(html_image, unsafe_allow_html=True)
-    st.markdown("<h1 style='text-align: center; color:#52527a;'>📽️ Module de recommandation</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color:#52527a;'>Module de recherche</h1>", unsafe_allow_html=True)
     # st.markdown("<h2 style='color:#006699;margin-bottom:-40px;'>Les Graphiques:</h2>", unsafe_allow_html=True)
     st.header("", divider='grey')
 
     col1, col2, col3= st.columns([1,2,1])
+
     with col2:
         movie_options = np.insert(df_movies['originalTitle'].unique(), 0, '')
         selected_movie = st.selectbox("Select a movie (optional):", options=movie_options)
+
     col1, col2, col3  = st.columns(3)
     with col1:
         selected_genres = st.multiselect("Select genres (optional):", options=np.sort(df_movies['genres'].str.split(',', expand=True).stack().unique()))
@@ -175,7 +179,7 @@ st.markdown("""<style>
 
 if btn_statment:
     # Fetch recommendations, potentially with one extra to exclude the selected movie later
-    adjusted_num_recs = num_recommendations + 1 if selected_movie != 'None' else num_recommendations
+    adjusted_num_recs = num_recommendations + 1 if selected_movie != '' else num_recommendations
     recommendations = get_recommendations(selected_movie, selected_genres, selected_actors, adjusted_num_recs)
 
     if isinstance(recommendations, str):
