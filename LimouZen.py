@@ -26,6 +26,20 @@ with st.container():
     st.markdown("<h1 style='text-align: center; color:#006699; margin-top:-80px;'>BONJOUR<br>LimouZen Cinéma</h1>", unsafe_allow_html=True)
     st.markdown("<h2 style='color:#006699;margin-bottom:-40px;'>Notre équipe :</h2>", unsafe_allow_html=True)
     st.header("", divider='rainbow')
+
+    col1, col2, col3, col4 = st.columns([1,2,3,1])
+    with col2:
+        st.image('images/logo-squarecharts.png')
+        image_path = "https://static.streamlit.io/examples/cat.jpg"
+        html_image = f"<img src='{image_path}'>"
+        st.markdown(html_image, unsafe_allow_html=True)
+
+    with col3:
+        st.markdown("""<div style='margin:40px 0px 40px 0px;'>
+                    Square Charts, spécialiste de l'analyse de données, présente une analyse approfondie du marché du cinéma, accompagnée d'un modèle de recommandation de films personnalisé.
+                    </div>
+                    """, unsafe_allow_html=True)
+    
     col1, col2, col3 = st.columns(3)
     with col1:
         st.image("https://static.streamlit.io/examples/cat.jpg")
