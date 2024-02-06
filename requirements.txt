@@ -3,4 +3,3 @@ streamlit
 sklearn
 plotly
 matplotlib
-plotly_express
