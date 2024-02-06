@@ -16,11 +16,18 @@ st.set_page_config(
 st.title("Movie Recommendation System")
 
 # User interface for selecting a movie title, genres, and actors
-movie_options = np.insert(df_movies['originalTitle'].unique(), 0, '')
-selected_movie = st.selectbox("Select a movie (optional):", options=movie_options)
-selected_genres = st.multiselect("Select genres (optional):", options=np.sort(df_movies['genres'].str.split(',', expand=True).stack().unique()))
-selected_actors = st.multiselect("Select actor(s) (optional):", options=np.sort(df_movies['actors_actresses'].str.split(',', expand=True).stack().unique()))
-num_recommendations = st.slider("Select the number of recommendations:", 1, 10, 6)
+with st.container():
+    col1, col2, col3 = st.columns([1,2,1])
+    with col2:
+        movie_options = np.insert(df_movies['originalTitle'].unique(), 0, '')
+        selected_movie = st.selectbox("Select a movie (optional):", options=movie_options)
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        selected_genres = st.multiselect("Select genres (optional):", options=np.sort(df_movies['genres'].str.split(',', expand=True).stack().unique()))
+    with col2:
+        selected_actors = st.multiselect("Select actor(s) (optional):", options=np.sort(df_movies['actors_actresses'].str.split(',', expand=True).stack().unique()))
+    with col3:
+        num_recommendations = st.slider("Select the number of recommendations:", 1, 10, 6)
 
 # function to split strings into list of str
 def splitter(value):
@@ -138,11 +145,16 @@ st.markdown("""<style>
                 font-weight: 300;
                 font-size:18px;
             }
+            .center {
+                display: flex;
+                justify-content: center;
+            }
             </style>""", unsafe_allow_html=True)
 
 ####The STREAMLIT layout and buttons configuration
+btn_statment = st.button("Get Recommendations")
 
-if st.button("Get Recommendations"):
+if btn_statment:
     # Fetch recommendations, potentially with one extra to exclude the selected movie later
     adjusted_num_recs = num_recommendations + 1 if selected_movie != 'None' else num_recommendations
     recommendations = get_recommendations(selected_movie, selected_genres, selected_actors, adjusted_num_recs)
