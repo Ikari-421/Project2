@@ -56,7 +56,7 @@ st.markdown("""<style>
             .profil img{
                 width:150px;
                 border:#333366 solid 4px;
-                border-radius:50%;
+                # border-radius:50%;
                 box-shadow: 1px 1px 15px 1px #c4c4c4;
             }
             .profil h3{
