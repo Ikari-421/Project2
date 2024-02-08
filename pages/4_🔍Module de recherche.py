@@ -127,20 +127,21 @@ def get_recommendations(movie_title, selected_genres, selected_actors, num_recs)
         top30000 = top30000[top30000['genres'].apply(lambda x: any(genre.strip() in str(x).split(',') for genre in selected_genres) if x else False)]
     #set n_neighbors to avoid error, def 65
     n_neighbors = min(len(top30000),60)
+
     if n_neighbors > 0:
-        
+
         # Include the selected movie for comparison if it's not None and not already in the filtered dataset
         if movie_title != 'None' and movie_title not in top30000['originalTitle'].values:
             selected_movie_df = df_movies[df_movies['originalTitle'] == movie_title]
             top30000 = pd.concat([top30000, selected_movie_df], ignore_index=True)
-      
-    
+
+
         # Running knn if a title is selected.
         if movie_title != 'None':
             # Getting the index of the seleted film then create dummies of categoricals
             # Retrieve the overview of the selected movie       
             selected_movie_overview = df_movies[df_movies['originalTitle'] == movie_title]['overview'].iloc[0]       
-       
+
             stop_words = set(['the', 'and', 'of', 'in', 'a', 'to', 'is', 'it', 'with', 'as', 'for', 'on', 'at', 'by', 'an'])
 
             index_movie = top30000.loc[top30000["originalTitle"] == movie_title].index[0]

@@ -124,11 +124,11 @@ def production_charts(filtered_df):
         top_10_companies_df2.columns = ['Production Company', 'Number of Movies']
 
         fig2 = px.bar(top_10_companies2, 
-            title='Top 10 Production Companies in Top 1000 Highest Ranked Films',
+            title='Top 10 Production Companies',
             labels={'value': 'Number of Films', 'index': 'Production Company'},
             color_discrete_sequence=[color_chart_1]
         )
-        dict_title["text"] = "Top 10 Production Companies in Top 1000 Highest Ranked Films"
+        dict_title["text"] = "Top 10 Production Companies"
         fig2.update_layout(
             title = dict_title,
             plot_bgcolor=background_color,
@@ -148,6 +148,7 @@ def production_charts(filtered_df):
         most_successful_companies_df = most_successful_companies.reset_index()
         most_successful_companies_df.columns = ['Production Company', 'Total Profit']
 
+        most_successful_companies_df = most_successful_companies_df.sort_values('Total Profit', ascending= False).sort_values('Total Profit')
 
         fig3 = px.bar(most_successful_companies_df, 
                     y='Production Company', 
@@ -179,14 +180,15 @@ def production_charts(filtered_df):
         top_companies_by_avg_profit_df = top_companies_by_avg_profit.reset_index()
         top_companies_by_avg_profit_df.columns = ['Production Company', 'Average Profit']
 
+        top_companies_by_avg_profit_df=top_companies_by_avg_profit_df.sort_values('Average Profit')
+
         fig4 = px.bar(top_companies_by_avg_profit_df, 
                     x='Average Profit', 
-                    y='Production Company', 
-                    title='Top 10 Production Companies by Average Profit per Film (Min 10 Films)',
+                    y='Production Company',
                     orientation='h',
                     color_discrete_sequence=[color_chart_1])
         
-        dict_title["text"] = "Top 10 Production Companies by Average Profit per Film (Min 10 Films)"
+        dict_title["text"] = "Top 10 Production Companies by Average Profit per Film"
         fig4.update_layout(
             title = dict_title,
             plot_bgcolor=background_color,
@@ -219,10 +221,10 @@ def production_charts(filtered_df):
 
         with st.expander("Select Graphs to Display"):
             show_graph_1 = st.checkbox('Top 10 Production Companies by Number of Movies', True)
-            show_graph_2 = st.checkbox('Top 10 Production Companies in Top 1000 Highest Ranked Films', True)
+            show_graph_2 = st.checkbox('Top 10 Production Companies', True)
             show_graph_3 = st.checkbox('Top 10 Most Successful Production Companies by Profit', True)
             show_graph_4 = st.checkbox('Top 10 Production Companies by Average Profit per Film (Min 10 Films)', True)
-            show_graph_5 = st.checkbox('Number of Production Companies Over the Years', True)
+            show_graph_5 = st.checkbox('Number of Production Companies Over the Years', False)
 
 
         graphs_selected = sum([show_graph_1, show_graph_2, show_graph_3, show_graph_4, show_graph_5])
@@ -376,7 +378,7 @@ def finance_charts(filtered_df):
             show_graph_2 = st.checkbox('Top 10 Films by Revenue, Budget, and Profit', True)
             show_graph_3 = st.checkbox('Top 10 Films by Budget and Their Profits', True)
             show_graph_4 = st.checkbox('Top 10 Films by Revenue and Their Profits', True)
-            show_graph_5 = st.checkbox('Top 10 Films by Revenue, Profit, Number of Votes, and Average Rating', True)
+            show_graph_5 = st.checkbox('Top 10 Films by Revenue, Profit, Number of Votes, and Average Rating', False)
 
         graphs_selected = sum([show_graph_1, show_graph_2, show_graph_3, show_graph_4, show_graph_5])
 
@@ -740,6 +742,19 @@ with st.container(border=True):
     with tab1:
         st.markdown("""<h3 class='title-tab'>Analyse secteur</h3>
                     """, unsafe_allow_html=True)
+        st.title("Indice de fréquentation")
+        st.image("images\Indice Creuse.png")
+        st.write("Un habitant de la creuse va au cinéma environ 1,5 fois par an et celà est stable depuis plus de 20 ans")
+        st.title("Frequentation cinéma")
+        st.image("images\cine_frequentation_2021.jpg")
+        st.write("On constate une augmentation de la fréquentation durant l'été puis un pic en fin Octobre ainsi que les deux dernière semaine de septembre.")
+        st.title("Sortie hebdomadaire")
+        st.image("images\sortie_hebdo.jpg")
+        st.write("La part de marché des films français est estimée à 39,0 % sur les sept premiers mois de l’année et celle des films américains à 45,6 %. source:'www.cnc.fr'")
+        st.title("Préference des français")
+        st.image("images\Sondage_CSA.jpg")
+        st.write("Prédominance de genre comédie, suivi de Action et Thriller pour plus de 50% source:'Sondage CSA'")
+
 
     with tab2:
         st.markdown("<h3 class='title-tab'>Finances</h3>", unsafe_allow_html=True)
