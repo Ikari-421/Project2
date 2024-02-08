@@ -12,14 +12,24 @@ url = "./src_data/"
 df_movies = pd.read_csv(url+"new_features.csv")
 
 st.set_page_config(
-    page_title="Analyse et KPIs",
-    page_icon="📈",
+    page_title="Module de recherche",
+    page_icon="📽️",
     layout="wide")
 
-st.title("Movie Recommendation System")
+with st.sidebar:
+    st.image("images/Logo-squarecharts_wide_2.png")
 
 # User interface for selecting a movie title, genres, and actors
 with st.container():
+    image_path = "https://github.com/Ikari-421/Project2/blob/master/images/Logo-limouzen_square.png?raw=true"
+    html_image = f"""
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: -50px;">
+        <img src='{image_path}' alt='Image' style="height:200px;">
+    </div>"""
+    st.markdown(html_image, unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color:#52527a;'>Module de recherche</h1>", unsafe_allow_html=True)
+    st.header("", divider='grey')
+
     col1, col2, col3 = st.columns([1,2,1])
     with col2:
         movie_options = np.insert(df_movies['originalTitle'].unique(), 0, '')
