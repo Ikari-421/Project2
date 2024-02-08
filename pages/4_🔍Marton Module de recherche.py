@@ -9,7 +9,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.impute import SimpleImputer
 
 url = "./src_data/"
-df_movies = pd.read_csv("new_features.csv")
+df_movies = pd.read_csv(url+"new_features.csv")
 
 st.set_page_config(
     page_title="Analyse et KPIs",
