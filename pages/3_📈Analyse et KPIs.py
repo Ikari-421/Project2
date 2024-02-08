@@ -743,7 +743,7 @@ with st.container(border=True):
         st.markdown("""<h3 class='title-tab'>Analyse secteur</h3>
                     """, unsafe_allow_html=True)
         st.title("Indice de fréquentation")
-        st.image("images\indice_creuse.png")
+        # st.image("images\indice_creuse.png")
         st.write("Un habitant de la creuse va au cinéma environ 1,5 fois par an et celà est stable depuis plus de 20 ans")
         st.title("Frequentation cinéma")
         st.image("images\cine_frequentation_2021.jpg")
