@@ -752,7 +752,7 @@ with st.container(border=True):
         # st.image("images\sortie_hebdo.jpg")
         st.write("La part de marché des films français est estimée à 39,0 % sur les sept premiers mois de l’année et celle des films américains à 45,6 %. source:'www.cnc.fr'")
         st.title("Préference des français")
-        st.image("..\images\Sondage_CSA.jpg")
+        st.image("../images/Sondage_CSA.jpg")
         st.write("Prédominance de genre comédie, suivi de Action et Thriller pour plus de 50% source:'Sondage CSA'")
 
 
