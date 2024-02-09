@@ -42,7 +42,7 @@ st.markdown("""<style>
             </style>""", unsafe_allow_html=True)
 
 with st.container():
-    image_path = "https://github.com/Ikari-421/Project2/blob/master/images/Logo-limouzen_square.png?raw=true"
+    image_path = "https://github.com/Ikari-421/Project2/blob/master/images/Logo-limouzen_wide.png?raw=true"
     html_image = f"""
     <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: -50px;">
         <img src='{image_path}' alt='Image' style="height:200px;">

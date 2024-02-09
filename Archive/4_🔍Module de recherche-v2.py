@@ -7,11 +7,8 @@ from sklearn.preprocessing import RobustScaler
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.impute import SimpleImputer
-import os
-from datetime import datetime
 
 url = "./src_data/"
-# df_movies = pd.read_csv(r"C:\Users\Admin\new_features.csv")
 df_movies = pd.read_csv(url+"new_features.csv")
 
 st.set_page_config(
@@ -45,8 +42,6 @@ with st.container():
     with col3:
         num_recommendations = st.slider("Select the number of recommendations:", 1, 10, 8)
 
-
-#
 # function to split strings into list of str
 def splitter(value):
     """Split comma-separated strings into a list."""
@@ -120,46 +115,6 @@ def combine_recommendations(primary_recommendations, actor_based_recommendations
     combined_sorted = combined.sort_values(by=['actor_match', 'similarity_score'], ascending=[False, False])
     
     return combined_sorted.head(num_recs)
-
-###monitoring for client
-filepath = 'search_tracking.csv'
-directory_path = r"C:\Users\Admin"  # Note: No backslash at the end
-full_file_path = os.path.join(directory_path, filepath)
-# Function to initialize or load the tracking DataFrame
-def load_or_create_tracking_df(filepath):
-    try:
-        # Try loading the existing DataFrame
-        df = pd.read_csv(full_file_path)
-    except FileNotFoundError:
-        # If it does not exist, initialize it
-        df = pd.DataFrame(columns=['movie_title', 'genre', 'actors', 'count','last_time_searched'])
-    return df
-
-# Function to update the DataFrame with a new search
-
-def update_tracking_df(df, search_query, filepath):
-    movie_title, genres, actors = search_query
-    genre = ', '.join(genres)  # Convert list to string
-    actors = ', '.join(actors)  # Convert list to string
-    current_date = datetime.now().strftime('%Y-%m-%d')  # Get the current date in YYYY-MM-DD format
-
-    # Check if the entry exists with the exact combination of movie_title, genre, and actors
-    mask = (df['movie_title'] == movie_title) & (df['genre'] == genre) & (df['actors'] == actors)
-    if df.loc[mask].empty:
-        # If not, add a new entry
-        new_row = pd.DataFrame({'movie_title': [movie_title], 'genre': [genre], 'actors': [actors], 'count': [1], 'last_time_searched': [current_date]})
-        df = pd.concat([df, new_row], ignore_index=True)
-    else:
-        # If it exists, increment the 'count' and update 'last_time_searched'
-        df.loc[mask, 'count'] += 1
-        df.loc[mask, 'last_time_searched'] = current_date
-
-    # Save the updated DataFrame
-    df.to_csv(filepath, index=False)
-    return df
-
-
-
 # The main function to make recommendations
 def get_recommendations(movie_title, selected_genres, selected_actors, num_recs):
     top30000 = df_movies.copy()
@@ -171,25 +126,22 @@ def get_recommendations(movie_title, selected_genres, selected_actors, num_recs)
     if selected_genres:
         top30000 = top30000[top30000['genres'].apply(lambda x: any(genre.strip() in str(x).split(',') for genre in selected_genres) if x else False)]
     #set n_neighbors to avoid error, def 65
-    n_neighbors = min(len(top30000),55)
+    n_neighbors = min(len(top30000),60)
+
     if n_neighbors > 0:
-        
+
         # Include the selected movie for comparison if it's not None and not already in the filtered dataset
         if movie_title != 'None' and movie_title not in top30000['originalTitle'].values:
             selected_movie_df = df_movies[df_movies['originalTitle'] == movie_title]
             top30000 = pd.concat([top30000, selected_movie_df], ignore_index=True)
-      
-        else:
-            recommended_movies=top30000[['originalTitle', 'runtimeMinutes', 'genres', 'startYear', 'averageRating', 'numVotes', 'actors_actresses', 'directors', 'overview', 'poster_path']]
-            recommended_movies= recommended_movies.set_index('originalTitle')
+
+
         # Running knn if a title is selected.
-        selected_movie_df = df_movies[df_movies['originalTitle'] == movie_title]
-        if not selected_movie_df.empty:
+        if movie_title != 'None':
             # Getting the index of the seleted film then create dummies of categoricals
-            # Retrieve the overview of the selected movie
-                  
+            # Retrieve the overview of the selected movie       
             selected_movie_overview = df_movies[df_movies['originalTitle'] == movie_title]['overview'].iloc[0]       
-       
+
             stop_words = set(['the', 'and', 'of', 'in', 'a', 'to', 'is', 'it', 'with', 'as', 'for', 'on', 'at', 'by', 'an'])
 
             index_movie = top30000.loc[top30000["originalTitle"] == movie_title].index[0]
@@ -225,9 +177,7 @@ def get_recommendations(movie_title, selected_genres, selected_actors, num_recs)
             recommended_movies = top30000.iloc[recommendation_indices][['originalTitle', 'runtimeMinutes', 'genres', 'startYear', 'averageRating', 'numVotes', 'actors_actresses', 'directors', 'overview', 'poster_path']]
             recommended_movies = sort_recommendations_by_overview_similarity(selected_movie_overview, recommended_movies)
             recommended_movies= recommended_movies.set_index('originalTitle')
-        else:
-            recommended_movies=top30000[['originalTitle', 'runtimeMinutes', 'genres', 'startYear', 'averageRating', 'numVotes', 'actors_actresses', 'directors', 'overview', 'poster_path']]
-            recommended_movies= recommended_movies.set_index('originalTitle')
+
         
     else:
         # Inform the user that no films match their specified criteria
@@ -243,13 +193,10 @@ def get_recommendations(movie_title, selected_genres, selected_actors, num_recs)
                 selected_movie_df = df_movies[df_movies['originalTitle'] == movie_title]
                 top30000 = pd.concat([top30000, selected_movie_df], ignore_index=True)
       
-        else:
-            recommended_movies=top30000[['originalTitle', 'runtimeMinutes', 'genres', 'startYear', 'averageRating', 'numVotes', 'actors_actresses', 'directors', 'overview', 'poster_path']]
-            recommended_movies= recommended_movies.set_index('originalTitle')
+        
     
         # Running knn if a title is selected.
-        selected_movie_df = df_movies[df_movies['originalTitle'] == movie_title]
-        if not selected_movie_df.empty:
+        if movie_title != 'None':
             # Getting the index of the seleted film then create dummies of categoricals
             # Retrieve the overview of the selected movie       
             selected_movie_overview = df_movies[df_movies['originalTitle'] == movie_title]['overview'].iloc[0]       
@@ -288,9 +235,6 @@ def get_recommendations(movie_title, selected_genres, selected_actors, num_recs)
             recommendation_indices = model.kneighbors([X_scaled[index_movie], ])[1][0]
             recommended_movies = top30000.iloc[recommendation_indices][['originalTitle', 'runtimeMinutes', 'genres', 'startYear', 'averageRating', 'numVotes', 'actors_actresses', 'directors', 'overview', 'poster_path']]
             recommended_movies = sort_recommendations_by_overview_similarity(selected_movie_overview, recommended_movies)
-            recommended_movies= recommended_movies.set_index('originalTitle')
-        else:
-            recommended_movies=top30000[['originalTitle', 'runtimeMinutes', 'genres', 'startYear', 'averageRating', 'numVotes', 'actors_actresses', 'directors', 'overview', 'poster_path']]
             recommended_movies= recommended_movies.set_index('originalTitle')
     return recommended_movies
 
@@ -352,46 +296,17 @@ st.markdown("""<style>
 btn_statment = st.button("Get Recommendations")
 
 if btn_statment:
-    #tracking
-    tracking_df = load_or_create_tracking_df(filepath)
     # Fetch recommendations, potentially with one extra to exclude the selected movie later
     adjusted_num_recs = num_recommendations  if selected_movie != 'None' else num_recommendations
     recommendations = get_recommendations(selected_movie, selected_genres, selected_actors, adjusted_num_recs)
-    # tracking
-    movie_title_for_tracking = selected_movie if selected_movie else "Not_included"
-    genres_for_tracking = selected_genres if selected_genres else ["Not_included"]
-    actors_for_tracking = selected_actors if selected_actors else ["Not_included"]
-    
-    # Update the tracking DataFrame with the  search
-    search_query = (movie_title_for_tracking, genres_for_tracking, actors_for_tracking)
-    tracking_df = update_tracking_df(tracking_df, search_query, filepath)
+
     if isinstance(recommendations, str):
             # If recommendations is a string, display it as a message(when no movie found)
             st.write(recommendations)
 
     if selected_movie != '':
         movie_details = df_movies[df_movies['originalTitle'] == selected_movie].iloc[0]
-        first_actor = movie_details['actors_actresses'].split(',')[0] if movie_details['actors_actresses'] else None
-        first_director = movie_details['directors'].split(',')[0] if movie_details['directors'] else None 
-        main_recommendations = get_recommendations(selected_movie, selected_genres, selected_actors, adjusted_num_recs)
-        selected_movie_row = df_movies[df_movies['originalTitle'] == selected_movie]
-        if not selected_movie_row.empty and selected_movie_row.iloc[0]['actors_actresses']:
-            first_actor = selected_movie_row.iloc[0]['actors_actresses'].split(',')[0].strip()
-        else:
-            first_actor = None
-        if first_actor:
-            actor_recommendations = df_movies[df_movies['actors_actresses'].apply(lambda x: first_actor in x.split(',') if pd.notna(x) else False)].set_index('originalTitle').head(4)
-        else:
-            actor_recommendations = pd.DataFrame()
 
-        if not selected_movie_row.empty and selected_movie_row.iloc[0]['directors']:
-            first_director = selected_movie_row.iloc[0]['directors'].split(',')[0].strip()
-        else:
-            first_director = None
-        if first_director:
-            director_recommendations = df_movies[df_movies['directors'].apply(lambda x: first_director in x.split(',') if pd.notna(x) else False)].set_index('originalTitle').head(4)
-        else:
-            director_recommendations = pd.DataFrame()
 
         with st.container():
             # Create a two-column layout
@@ -443,7 +358,7 @@ if btn_statment:
 
     # only the requested number of recommendations
     recommendations = recommendations.head(adjusted_num_recs)
-    
+
     st.subheader('Nos recomandation')
     # Show recommendations
     cols = [None, None, None]
@@ -477,77 +392,5 @@ if btn_statment:
                             unsafe_allow_html=True)
 
                 st.markdown(f"""<div style='height:5px;'>
-                            </div>""",
-                            unsafe_allow_html=True)
-    if selected_movie != '':
-        st.subheader('Recommendations With main Actor')
-        # Show recommendations
-        cols = [None, None, None]
-        for index, (title, row) in enumerate(actor_recommendations.iterrows()):
-            if index % 4 == 0:
-                cols = st.columns(4) 
-
-            with cols[index % 4]:
-                with st.container(border=True):
-                    image_path = 'https://image.tmdb.org/t/p/original/'+row['poster_path']
-                    html_image = f"<img src='{image_path}' alt='Image' style='width: 100%; border-radius:8px;box-shadow: 1px 1px 15px 1px #c4c4c4;'>"
-                    st.markdown(html_image, unsafe_allow_html=True)
-
-                    runtimeMinutes = str(int(row['runtimeMinutes']))
-                    startYear = str(row['startYear'])
-                    directors = str(row['directors'])
-                    actors_actresses = str(row['actors_actresses'])
-                    averageRating = str(round(row['averageRating'],2))
-                    overview = row['overview']
-
-                    st.markdown(f"""<div class='blur-container'>
-                            <h2>{title}</h2>
-                            <p>
-                                Durée: <span>{runtimeMinutes}</span> minutes</br>
-                                Année: <span>{startYear}</span></br>
-                                Réalisateur(trice): <span>{directors}</span></br>
-                                <!-- Acteurs(trices): <span>{actors_actresses}</span></br> -->
-                                Note IMBD: <span>{averageRating}</span></br>
-                            </p>
-                            </div>""",
-                            unsafe_allow_html=True)
-
-                    st.markdown(f"""<div style='height:5px;'>
-                            </div>""",
-                            unsafe_allow_html=True)
-    if selected_movie != '':
-        st.subheader('Recommendations With The Same Director')
-        # Show recommendations
-        cols = [None, None, None]
-        for index, (title, row) in enumerate(director_recommendations.iterrows()):
-            if index % 4 == 0:
-                cols = st.columns(4) 
-
-            with cols[index % 4]:
-                with st.container(border=True):
-                    image_path = 'https://image.tmdb.org/t/p/original/'+row['poster_path']
-                    html_image = f"<img src='{image_path}' alt='Image' style='width: 100%; border-radius:8px;box-shadow: 1px 1px 15px 1px #c4c4c4;'>"
-                    st.markdown(html_image, unsafe_allow_html=True)
-
-                    runtimeMinutes = str(int(row['runtimeMinutes']))
-                    startYear = str(row['startYear'])
-                    directors = str(row['directors'])
-                    actors_actresses = str(row['actors_actresses'])
-                    averageRating = str(round(row['averageRating'],2))
-                    overview = row['overview']
-
-                    st.markdown(f"""<div class='blur-container'>
-                            <h2>{title}</h2>
-                            <p>
-                                Durée: <span>{runtimeMinutes}</span> minutes</br>
-                                Année: <span>{startYear}</span></br>
-                                Réalisateur(trice): <span>{directors}</span></br>
-                                <!-- Acteurs(trices): <span>{actors_actresses}</span></br> -->
-                                Note IMBD: <span>{averageRating}</span></br>
-                            </p>
-                            </div>""",
-                            unsafe_allow_html=True)
-
-                    st.markdown(f"""<div style='height:5px;'>
                             </div>""",
                             unsafe_allow_html=True)

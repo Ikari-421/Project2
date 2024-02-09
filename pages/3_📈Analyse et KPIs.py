@@ -34,6 +34,47 @@ st.markdown("""<style>
                 color:#52527a;
                 margin-bottom:10px;
             }
+            .container-1 {
+                display:flex;
+                # border: red solid 1px;
+                flex-direction:row;
+                justify-content:space-around;
+                width:100%;
+            }
+            .container-1 img{
+                width:100%;
+                margin-top:20px;
+                border-radius:15px;
+                border: silver solid 1px;
+                box-shadow: 1px 1px 5px 1px #c4c4c4;
+            }
+            .container-1 .first-item, .container-1 .second-item{
+                # border: blue solid 1px;
+                border-radius:15px;
+                padding:20px;
+                width:45%;
+            }
+            .container-2, .container-3 {
+                # border: red solid 1px;
+                width:90%;
+                margin: 60px auto;
+            }
+            .container-2 img, .container-3 img{
+                width:100%;
+                display: block;
+                margin: 40px auto;
+                border-radius:15px;
+                border: silver solid 1px;
+                box-shadow: 1px 1px 5px 1px #c4c4c4;
+            }
+            .container-3 img{
+                width:80%;
+            }
+            .container-1 h4, .container-2 h4, .container-3 h4, .container-4 h4{
+                color:orange;
+                text-decoration:underline;
+            }
+
             </style>""", unsafe_allow_html=True)
 
 #-----------------
@@ -725,7 +766,7 @@ def genres_charts(filtered_df):
 #-----------------
 
 with st.container():
-    image_path = "https://github.com/Ikari-421/Project2/blob/master/images/Logo-limouzen_square.png?raw=true"
+    image_path = "https://github.com/Ikari-421/Project2/blob/master/images/Logo-limouzen_wide.png?raw=true"
     html_image = f"""
     <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: -50px;">
         <img src='{image_path}' alt='Image' style="height:200px;">
@@ -739,22 +780,36 @@ with st.container(border=True):
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["Analyse secteur", "Finances", "Production companies",
                                             "Acteurs / directeur / écrivant","Genre"
                                             ])
+    
     with tab1:
         st.markdown("""<h3 class='title-tab'>Analyse secteur</h3>
+                        <div class='container-1'>
+                            <div class='first-item'>
+                                <h4>Indice de fréquentation</h4>
+                                <p>Un habitant de la creuse va au cinéma environ 1,5 fois par an et celà est stable depuis plus de 20 ans</p>
+                                <img src='https://github.com/Ikari-421/Project2/blob/master/images/indice_creuse.png?raw=true'>
+                            </div>
+                            <div class='second-item'>
+                                <h4>Sortie hebdomadaire</h4>
+                                <p>La part de marché des films français est estimée à 39,0 % sur les sept premiers mois de l’année et celle des films américains à 45,6 %. source:'www.cnc.fr'</p>
+                                <img src='https://github.com/Ikari-421/Project2/blob/master/images/sortie_hebdo.jpg?raw=true'>
+                            </div>
+                        </div>
+                        <div class='container-2'>
+                            <div>
+                                <h4>Frequentation cinéma</h4>
+                                <p>On constate une augmentation de la fréquentation durant l'été puis un pic en fin Octobre ainsi que les deux dernière semaine de septembre.</p>
+                                <img src='https://github.com/Ikari-421/Project2/blob/master/images/cine_frequentation_2021.jpg?raw=true'>
+                            </div>
+                        </div>
+                        <div class='container-3'>
+                            <div>
+                                <h4>Préference des français</h4>
+                                <p>Prédominance de genre comédie, suivi de Action et Thriller pour plus de 50% source:'Sondage CSA'</p>
+                                <img src='https://github.com/Ikari-421/Project2/blob/master/images/Sondage_CSA.jpg?raw=true.jpg'>
+                            </div>
+                        </div>
                     """, unsafe_allow_html=True)
-        st.title("Indice de fréquentation")
-        st.image("images/indice_creuse.png")
-        st.write("Un habitant de la creuse va au cinéma environ 1,5 fois par an et celà est stable depuis plus de 20 ans")
-        st.title("Frequentation cinéma")
-        st.image("images/cine_frequentation_2021.jpg")
-        st.write("On constate une augmentation de la fréquentation durant l'été puis un pic en fin Octobre ainsi que les deux dernière semaine de septembre.")
-        st.title("Sortie hebdomadaire")
-        st.image("images/sortie_hebdo.jpg")
-        st.write("La part de marché des films français est estimée à 39,0 % sur les sept premiers mois de l’année et celle des films américains à 45,6 %. source:'www.cnc.fr'")
-        st.title("Préference des français")
-        st.image("images/Sondage_CSA.jpg")
-        st.write("Prédominance de genre comédie, suivi de Action et Thriller pour plus de 50% source:'Sondage CSA'")
-
 
     with tab2:
         st.markdown("<h3 class='title-tab'>Finances</h3>", unsafe_allow_html=True)

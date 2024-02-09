@@ -10,7 +10,7 @@ with st.sidebar:
 
 # User interface for selecting a movie title, genres, and actors
 with st.container():
-    image_path = "https://github.com/Ikari-421/Project2/blob/master/images/Logo-limouzen_square.png?raw=true"
+    image_path = "https://github.com/Ikari-421/Project2/blob/master/images/Logo-limouzen_wide.png?raw=true"
     html_image = f"""
     <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: -50px;">
         <img src='{image_path}' alt='Image' style="height:200px;">
@@ -18,7 +18,39 @@ with st.container():
     st.markdown(html_image, unsafe_allow_html=True)
     st.markdown("<h1 style='text-align: center; color:#52527a;'>Nos recommandations</h1>", unsafe_allow_html=True)
     st.header("", divider='grey')
-
+st.markdown("""<style>
+            .title-tab {
+                color:#52527a;
+                margin-bottom:10px;
+            }
+            .flex-container {
+                display:flex;
+                # border: red solid 1px;
+                flex-direction:row;
+                justify-content:space-around;
+                align-items: center;
+                width:100%;
+            }
+            .items-images{
+                width:4O%;
+                height:400px;
+                border-radius:20px;
+                border: silver 2px solid;
+                margin-bottom: 50px;
+            }
+            .items-text{
+                width:4O%;
+                # border: red solid 1px;
+            }
+            .items-text li{
+                margin-bottom:40px;
+                list-style: none;
+            }
+            .items-text li b{
+                color:orange;
+                font-size:22px;
+            }
+            </style>""", unsafe_allow_html=True)
 with st.container(border=True):
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["Le marché du cinéma", "Module de recherche", "Analyse KPIs 1",
                             "Analyse KPIs 2", "Secteur géographique"
