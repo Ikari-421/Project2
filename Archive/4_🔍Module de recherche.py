@@ -381,8 +381,6 @@ if btn_statment:
             first_actor = None
         if first_actor:
             actor_recommendations = df_movies[df_movies['actors_actresses'].apply(lambda x: first_actor in x.split(',') if pd.notna(x) else False)].set_index('originalTitle').head(4)
-            actor_recommendations=actor_recommendations[actor_recommendations.index != selected_movie]
-    
         else:
             actor_recommendations = pd.DataFrame()
 
@@ -392,7 +390,6 @@ if btn_statment:
             first_director = None
         if first_director:
             director_recommendations = df_movies[df_movies['directors'].apply(lambda x: first_director in x.split(',') if pd.notna(x) else False)].set_index('originalTitle').head(4)
-            director_recommendations=director_recommendations[director_recommendations.index != selected_movie]
         else:
             director_recommendations = pd.DataFrame()
 
