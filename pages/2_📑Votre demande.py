@@ -67,7 +67,7 @@ with st.container(border=True):
                             </li>
                             <li>Prise d'info sur l'activité du <b>cinéma</b>
                             </li>
-                            <li>Obtenir quelques <b>statistiques</b> sur les films
+                            <li>Obtenir quelques <b>statistiques</b> sur les films <b>IMDB</b>
                             </li>
                             <li>Système de <b>recommandation</b> de <b>films</b>
                             </li>
