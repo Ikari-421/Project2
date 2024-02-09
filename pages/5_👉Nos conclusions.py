@@ -33,13 +33,19 @@ st.markdown("""<style>
             }
             .items-images{
                 width:4O%;
-                height:400px;
                 border-radius:20px;
-                border: silver 2px solid;
+                # border: silver 2px solid;
                 margin-bottom: 50px;
             }
+            .items-images img{
+                width: 100%;
+                margin: 30px 0;
+                border-radius: 20px;
+                border-radius:14px;box-shadow: 1px 1px 15px 1px #c4c4c4;
+                # border: silver 2px solid;
+            }
             .items-text{
-                width:4O%;
+                max-width:500px;
                 # border: red solid 1px;
             }
             .items-text li{
@@ -48,7 +54,7 @@ st.markdown("""<style>
             }
             .items-text li b{
                 color:orange;
-                font-size:22px;
+                font-size:20px;
             }
             </style>""", unsafe_allow_html=True)
 with st.container(border=True):
@@ -59,7 +65,7 @@ with st.container(border=True):
         st.markdown("<h3 class='title-tab'>Recommandations marché :</h3>", unsafe_allow_html=True)
         st.markdown("""<div class='flex-container'>
                         <div class="items-images">
-                            <img src='' alt='Image''>
+                            <img src='https://github.com/Ikari-421/Project2/blob/master/images/Movie%20Night.gif?raw=true' alt='Image''>
                         </div>
                         <div class="items-text">
                             <ul>
@@ -75,7 +81,7 @@ with st.container(border=True):
         st.markdown("<h3 class='title-tab'>Recommandations module de recommandations :</h3>", unsafe_allow_html=True)
         st.markdown("""<div class='flex-container'>
                         <div class="items-images">
-                            <img src='' alt='Image''>
+                            <img src='https://github.com/Ikari-421/Project2/blob/master/images/Software%20code%20testing.gif?raw=true' alt='Image''>
                         </div>
                         <div class="items-text">
                             <ul>
@@ -95,7 +101,7 @@ with st.container(border=True):
         st.markdown("<h3 class='title-tab'>Recommandations analyse KPIs 1:</h3>", unsafe_allow_html=True)
         st.markdown("""<div class='flex-container'>
                         <div class="items-images">
-                            <img src='' alt='Image''>
+                            <img src='https://github.com/Ikari-421/Project2/blob/master/images/Finance.gif?raw=true' alt='Image''>
                         </div>
                         <div class="items-text">
                             <ul>
@@ -113,7 +119,7 @@ with st.container(border=True):
         st.markdown("<h3 class='title-tab'>Recommandations analyse KPIs 2:</h3>", unsafe_allow_html=True)
         st.markdown("""<div class='flex-container'>
                         <div class="items-images">
-                            <img src='' alt='Image''>
+                            <img src='https://github.com/Ikari-421/Project2/blob/master/images/Finance.gif?raw=true' alt='Image''>
                         </div>
                         <div class="items-text">
                             <ul>
@@ -131,7 +137,7 @@ with st.container(border=True):
         st.markdown("<h3 class='title-tab'>Recommandations secteur géographique :</h3>", unsafe_allow_html=True)
         st.markdown("""<div class='flex-container'>
                         <div class="items-images">
-                            <img src='' alt='Image''>
+                            <img src='https://github.com/Ikari-421/Project2/blob/master/images/Pirates.gif?raw=true' alt='Image''>
                         </div>
                         <div class="items-text">
                             <ul>

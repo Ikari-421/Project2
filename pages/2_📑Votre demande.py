@@ -150,13 +150,13 @@ with st.container(border=True):
         col1, col2 = st.columns(2)
         with col1:
             st.image("images/Good_team.gif", use_column_width="auto")
-        with col2:st.markdown(f"""<div class='inner-text'>
+        with col2:st.markdown(f"""<div class='inner-text' style="margin-left:-100px;">
                         <ul>
-                            <li>Nettoyage de la base de données et sélection de 50 000 films
+                            <li>Nettoyage de la base de données et <b>sélection de 50 000 films</b>
                               </li>
-                            <li>Sélection des films traduits en français et création d'un classement de popularité
+                            <li>Sélection des films <b>traduits en français</b> et création d'un <b>classement de popularité</b>
                               </li>
-                            <li>Mise en place du N.L.P (Natural Language Processing) pour faciliter l'affinage
+                            <li>Mise en place du <b>N.L.P</b> (Natural Language Processing) pour <b>faciliter l'affinage</b>
                               </li>
                         <ul/>
                         </div>""", unsafe_allow_html=True)
