@@ -15,7 +15,7 @@ url = "./src_data/"
 df_movies = pd.read_csv(url+"new_features.csv")
 
 st.set_page_config(
-    page_title="Module de recherche",
+    page_title="Module de recommandations",
     page_icon="📽️",
     layout="wide")
 
@@ -30,7 +30,7 @@ with st.container():
         <img src='{image_path}' alt='Image' style="height:200px;">
     </div>"""
     st.markdown(html_image, unsafe_allow_html=True)
-    st.markdown("<h1 style='text-align: center; color:#52527a;'>Module de recherche</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color:#52527a;'>Module de recommandations</h1>", unsafe_allow_html=True)
     st.header("", divider='grey')
 
     col1, col2, col3 = st.columns([1,2,1])

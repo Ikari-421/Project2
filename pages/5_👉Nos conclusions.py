@@ -16,7 +16,7 @@ with st.container():
         <img src='{image_path}' alt='Image' style="height:200px;">
     </div>"""
     st.markdown(html_image, unsafe_allow_html=True)
-    st.markdown("<h1 style='text-align: center; color:#52527a;'>Nos recommandations</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color:#52527a;'>Nos conclusions et recommandations</h1>", unsafe_allow_html=True)
     st.header("", divider='grey')
 st.markdown("""<style>
             .title-tab {
@@ -52,7 +52,7 @@ st.markdown("""<style>
             }
             </style>""", unsafe_allow_html=True)
 with st.container(border=True):
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Le marché du cinéma", "Module de recherche", "Analyse KPIs 1",
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Le marché du cinéma", "Module de recommandations", "Analyse KPIs 1",
                             "Analyse KPIs 2", "Secteur géographique"
                             ])
     with tab1:
@@ -72,7 +72,7 @@ with st.container(border=True):
                     </div>
                     """, unsafe_allow_html=True)
     with tab2:
-        st.markdown("<h3 class='title-tab'>Recommandations module de recherche :</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 class='title-tab'>Recommandations module de recommandations :</h3>", unsafe_allow_html=True)
         st.markdown("""<div class='flex-container'>
                         <div class="items-images">
                             <img src='' alt='Image''>

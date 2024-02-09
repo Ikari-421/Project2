@@ -53,7 +53,8 @@ with st.container():
     st.markdown("<h2 style='color:#52527a;margin: -10px 0 10px 0;'>Nos missions:</h2>", unsafe_allow_html=True)
 
 with st.container(border=True):
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Notre travail", "Nos démarches", "Les outils",
+    tab1, tab2, tab3, tab4 = st.tabs(["Notre travail",
+                                               "Les outils",
                             "Les difficultés", "Améliorations"
                             ])
     with tab1:
@@ -80,31 +81,31 @@ with st.container(border=True):
                         </i></p>
                         </div>""", unsafe_allow_html=True)
 
-    with tab2:
-        st.markdown("<h3 class='title-tab'>Nos démarches effectuées</h3>", unsafe_allow_html=True)
-        col1, col2 = st.columns(2)
-        with col1:
-            st.image("images/Team_goals.gif", use_column_width="auto")
-        with col2:
-            st.markdown(f"""<div class='inner-text'>
-                        <ul>
-                            <li>Recherche internet pour l'étude Métier<br>
-                                <i>Source : Insee</i> 
-                            </li>
-                            <li>Mise en place de la méthode <b>Agil-Scrum</b>
-                            </li>
-                            <li>Filtrage et réorganisation des bases de données
-                            </li>
-                            <li>Extraction des <b>KPIs</b>
-                            </li>
-                            <li>Création d'un model de recommandation
-                            </li>
-                            <li>Nos recommandation métier
-                            </li>
-                        <ul/>
-                        </div>""", unsafe_allow_html=True)
+    # with tab2:
+    #     st.markdown("<h3 class='title-tab'>Nos démarches effectuées</h3>", unsafe_allow_html=True)
+    #     col1, col2 = st.columns(2)
+    #     with col1:
+    #         st.image("images/Team_goals.gif", use_column_width="auto")
+    #     with col2:
+    #         st.markdown(f"""<div class='inner-text'>
+    #                     <ul>
+    #                         <li>Recherche internet pour l'étude Métier<br>
+    #                             <i>Source : Insee</i> 
+    #                         </li>
+    #                         <li>Mise en place de la méthode <b>Agil-Scrum</b>
+    #                         </li>
+    #                         <li>Filtrage et réorganisation des bases de données
+    #                         </li>
+    #                         <li>Extraction des <b>KPIs</b>
+    #                         </li>
+    #                         <li>Création d'un model de recommandation
+    #                         </li>
+    #                         <li>Nos recommandation métier
+    #                         </li>
+    #                     <ul/>
+    #                     </div>""", unsafe_allow_html=True)
 
-    with tab3:
+    with tab2:
         st.markdown("<h3 class='title-tab'>Les outils utilisés</h3>", unsafe_allow_html=True)
         col1, col2 = st.columns(2)
         with col1:st.markdown(f"""<div class='inner-text'>
@@ -126,7 +127,7 @@ with st.container(border=True):
         with col2:
             st.image("images/Maintenance.gif", use_column_width="auto")
             
-    with tab4:
+    with tab3:
         st.markdown("<h3 class='title-tab'>Difficultés rencontrées</h3>", unsafe_allow_html=True)
         col1, col2 = st.columns(2)
         with col1:st.markdown(f"""<div class='inner-text'>
@@ -135,31 +136,27 @@ with st.container(border=True):
                             </li>
                             <li>Après analyse de la base complète IMDB <b>Sur-représentation</b> des films <b>Indiens</b>
                             </li>
-                            <li>Difficulté de <b>compréhention</b> de la demande du <b>projet</b>
-                            </li>
                             <li>Affinage du model de <b>Machine Learning</b> assez long
                             </li>
-                            <li>Mise en place de <b>Streamlit</b>
+                            <li>Mise en place de <b>Streamlit</b> complexe
                             </li>
                         <ul/>
                         </div>""", unsafe_allow_html=True)
         with col2:
             st.image("images/Dizzy_face.gif", use_column_width="auto")
-# 3e82a4
-    with tab5:
-        st.markdown("<h3 class='title-tab'>Nos pistes d'améliorations</h3>", unsafe_allow_html=True)
+
+    with tab4:
+        st.markdown("<h3 class='title-tab'>Nos solutions</h3>", unsafe_allow_html=True)
         col1, col2 = st.columns(2)
         with col1:
             st.image("images/Good_team.gif", use_column_width="auto")
         with col2:st.markdown(f"""<div class='inner-text'>
                         <ul>
-                            <li style="margin-top:55px;">Utilisation de modèle <b>N L P</b> (Natural Language Processing)
-                            </li>
-                            <li><b>historique</b> de recherche de <b>films</b> du client
-                            </li>
-                            <li><b>Explication du projet</b> plus claire et précise
-                            </li>
-                            <li>Accès aux données des <b>client</b> et <b>cinéma</b>
-                            </li>
+                            <li>Nettoyage de la base de données et sélection de 50 000 films
+                              </li>
+                            <li>Sélection des films traduits en français et création d'un classement de popularité
+                              </li>
+                            <li>Mise en place du N.L.P (Natural Language Processing) pour faciliter l'affinage
+                              </li>
                         <ul/>
                         </div>""", unsafe_allow_html=True)
