@@ -42,8 +42,9 @@ st.markdown("""<style>
                 justify-content:space-evenly;
             }
             .profil{
-                display:flex;background: rgb(205,205,205); 
-                background: linear-gradient(180deg, rgba(205,205,205,1) 18%, rgba(205,205,205,1) 44%, rgba(236,236,236,1) 76%);
+                display:flex;
+                background: rgb(233,238,245);
+                background: linear-gradient(110deg, rgba(233,238,245,1) 52%, rgba(243,245,248,1) 60%);
                 padding:25px;
                 border-radius:8px;
                 border: silver solid 0px;
