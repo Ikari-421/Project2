@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Nos recommanddations",
+    page_title="Nos conclusions",
     page_icon="👉",
     layout="wide")
 
@@ -41,7 +41,7 @@ st.markdown("""<style>
                 width: 100%;
                 margin: 30px 0;
                 border-radius: 20px;
-                border-radius:14px;box-shadow: 1px 1px 15px 1px #c4c4c4;
+                border-radius:14px;box-shadow: 1px 1px 5px 1px #c4c4c4;
                 # border: silver 2px solid;
             }
             .items-text{

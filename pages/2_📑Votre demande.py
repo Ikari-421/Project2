@@ -53,9 +53,7 @@ with st.container():
     st.markdown("<h2 style='color:#52527a;margin: -10px 0 10px 0;'>Nos missions:</h2>", unsafe_allow_html=True)
 
 with st.container(border=True):
-    tab1, tab2, tab3, tab4 = st.tabs(["Notre travail",
-                                               "Les outils",
-                            "Les difficultés", "Améliorations"
+    tab1, tab2, tab3, tab4 = st.tabs(["Notre travail", "Les outils", "Les difficultés", "Nos solutions"
                             ])
     with tab1:
         st.markdown("<h3 class='title-tab'>Présentation de notre travail</h3>", unsafe_allow_html=True)
