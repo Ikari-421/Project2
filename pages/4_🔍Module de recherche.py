@@ -43,7 +43,7 @@ with st.container():
     with col2:
         selected_actors = st.multiselect("Select actor(s) (optional):", options=np.sort(df_movies['actors_actresses'].str.split(',', expand=True).stack().unique()))
     with col3:
-        num_recommendations = st.slider("Select the number of recommendations:", 1, 10, 8)
+        num_recommendations = st.slider("Select the number of recommendations:", 1, 10, 4)
 
 
 #
